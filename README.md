@@ -1,23 +1,23 @@
-## 📘 Assistente Financeiro Educacional
-
-Projeto desenvolvido como prática de programação e educação financeira, inspirado nos cursos da Fundação Bradesco.
+# 📘 Assistente Financeiro - Fundação Bradesco
 
 ## 🎯 Objetivo
-Auxiliar usuários a compreender conceitos financeiros básicos e realizar simulações simples de investimento.
+Projeto educacional em Python para simular um assistente financeiro simples.
 
 ---
 
 ## ✅ Funcionalidades
 
-- 📊 Simulação de rendimento (juros compostos)
-- 💬 Explicação de produtos financeiros (CDB e poupança)
+- 📊 Simulação de investimento com juros compostos
+- 💬 Explicação de conceitos financeiros (CDB, Poupança, CDI)
 - 🔁 Memória do último cálculo
-- 🧠 Interação em linguagem simples
+- 📋 Menu interativo (melhor experiência do usuário)
 
 ---
 
 ## 🛠️ Tecnologias
-- Python (lógica básica e entrada de dados)
+- Python
+- Lógica de programação
+- Estruturas condicionais e funções
 
 ---
 
