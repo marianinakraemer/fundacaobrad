@@ -1,55 +1,75 @@
-def assistente():
-    print("📘 Assistente Financeiro - Fundação Bradesco")
-    print("Digite 'sair' para encerrar.\n")
+def exibir_menu():
+    print("\n📘 Assistente Financeiro - Fundação Bradesco")
+    print("Escolha uma opção:")
+    print("1 - Simular investimento")
+    print("2 - O que é CDB?")
+    print("3 - O que é Poupança?")
+    print("4 - O que é CDI?")
+    print("5 - Ver último cálculo")
+    print("0 - Sair")
 
-    ultimo_calculo = 0
+
+def calcular_investimento(valor, meses):
+    taxa = 0.01  # 1% ao mês (educacional)
+    return valor * (1 + taxa) ** meses
+
+
+def assistente():
+    ultimo_calculo = None
 
     while True:
-        user = input("Você: ").lower()
+        exibir_menu()
+        opcao = input("Digite a opção: ")
 
-        if user == "sair":
-            print("Assistente: Encerrando atendimento. Bons estudos! 📚")
+        # SAIR
+        if opcao == "0":
+            print("Assistente: Encerrando... Bons estudos! 📚")
             break
 
-        # Conceito financeiro
-        elif "cdb" in user:
-            print("Assistente: CDB é um investimento de renda fixa onde você empresta dinheiro ao banco e recebe juros.")
-
-        elif "poupança" in user:
-            print("Assistente: Poupança é um tipo de investimento com baixo risco e rendimento mensal.")
-
-        # Cálculo simples
-        elif "rende" in user:
+        # SIMULAÇÃO
+        elif opcao == "1":
             try:
-                palavras = user.split()
-                numeros = [float(p) for p in palavras if p.replace('.', '').isdigit()]
+                valor = float(input("Digite o valor do investimento: R$ "))
+                meses = int(input("Digite o tempo (em meses): "))
 
-                valor = numeros[0]
-                meses = int(numeros[1])
+                if valor <= 0 or meses <= 0:
+                    print("⚠️ Valores devem ser positivos.")
+                    continue
 
-                taxa = 0.01  # 1% ao mês (educacional)
-                montante = valor * (1 + taxa) ** meses
+                resultado = calcular_investimento(valor, meses)
+                ultimo_calculo = resultado
 
-                ultimo_calculo = montante
-
-                print(f"Assistente: Após {meses} meses, você terá R$ {montante:.2f}")
+                print(f"✅ Resultado: R$ {resultado:.2f}")
+                print("💡 Este cálculo usa juros compostos de 1% ao mês (valor educacional).")
 
             except:
-                print("Assistente: Use o formato: 'rende 1000 em 12 meses'")
+                print("⚠️ Entrada inválida. Tente novamente.")
 
-        # Memória simples
-        elif "ultimo" in user:
+        # CDB
+        elif opcao == "2":
+            print("📊 CDB (Certificado de Depósito Bancário):")
+            print("É um investimento de renda fixa onde você empresta dinheiro ao banco e recebe juros sobre isso.")
+
+        # POUPANÇA
+        elif opcao == "3":
+            print("💰 Poupança:")
+            print("É um investimento seguro e simples, com rendimento mensal, indicado para iniciantes.")
+
+        # CDI
+        elif opcao == "4":
+            print("📈 CDI (Certificado de Depósito Interbancário):")
+            print("É uma taxa usada como referência para diversos investimentos como CDB.")
+
+        # ÚLTIMO RESULTADO
+        elif opcao == "5":
             if ultimo_calculo:
-                print(f"Assistente: Seu último cálculo foi R$ {ultimo_calculo:.2f}")
+                print(f"📌 Último resultado: R$ {ultimo_calculo:.2f}")
             else:
-                print("Assistente: Nenhum cálculo realizado ainda.")
+                print("⚠️ Nenhum cálculo realizado ainda.")
 
-        # Ajuda
         else:
-            print("Assistente: Posso te ajudar com:")
-            print("- Cálculos de investimento")
-            print("- Explicação de CDB e poupança")
-            print("Exemplo: 'rende 1000 em 12 meses'")
+            print("❌ Opção inválida. Escolha uma opção do menu.")
 
-# executar
+
+# EXECUTAR
 assistente()
